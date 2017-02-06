@@ -86,7 +86,7 @@ static void	ft_determ_player(t_filler *params)
 	map = params->map;
 	x = 0;
 	o = 0;
-	player = '?';
+	player = 'X';
 	while (*map != '\0')
 	{
 		if (*map == 'x')

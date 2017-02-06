@@ -31,8 +31,14 @@ typedef struct	s_filler
 	int		map_hight;
 	int		figure_width;
 	int		figure_hight;
-
 }			t_filler;
+
+
+typedef  struct s_border
+{
+	int		*o_borders;
+//	int		x_borders[8];
+}				t_border;
 
 void ft_determ_param(t_filler *params, char *out);
 
