@@ -1,1 +1,1 @@
-gcc ft_determ_param.c ft_filler.c ft_print_params.c ft_determ_borders.c libft.a
+gcc ft_determ_param.c ft_filler.c ft_print_params.c ft_determ_borders.c ft_determ_attack_zone_top.c ft_mark_borders.c ft_determ_attack_zone.c ft_determ_attack_zone_right.c ft_determ_attack_zone_bot.c  ft_determ_attack_zone_left.c  libft.a && ./output | ./a.out

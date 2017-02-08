@@ -27,6 +27,7 @@ static char *ft_read_out()
 	return (out);
 }
 
+
 int main(void)
 {
 	char		*out;
@@ -35,8 +36,12 @@ int main(void)
 	params = (t_filler*)malloc(sizeof(*params));
 	out = ft_read_out();
 	ft_determ_param(params, out);
+	ft_strdel(&out);
 	ft_determ_borders(params);
-	ft_print_params(params);
+	ft_mark_borders(params);
+	ft_determ_attack_zone(params);
 
+
+	ft_print_params(params);
 	return (0);
 }

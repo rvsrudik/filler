@@ -7,17 +7,21 @@ void ft_print_params(t_filler *params)
 		printf("==========PLAYER===========\n");
 		printf("        --->[%c]<---\n", params->player);
 	}
-	if (PRINT_MAP)
+	if (PRINT_MAP || PRINT_MAP_SIZE)
 	{
-		printf("===========MAP=============\n");
-		printf("       [%d] x [%d]\n", params->map_width, params->map_hight);
-		printf("%s", params->map);
+		printf("============MAP============\n");
+		if (PRINT_MAP_SIZE)
+			printf("        [%d] x [%d]\n", params->map_width, params->map_hight);
+		if (PRINT_MAP)
+			printf("%s", params->map);
 	}
-	if (PRINT_FIGURE)
+	if (PRINT_FIGURE || PRINT_FIGURE_SIZE)
 	{
-		printf("===========FIGURE==========\n");
-		printf("[%d] x [%d]\n", params->figure_width, params->figure_hight);
-		printf("%s", params->figure);
+		printf("==========FIGURE===========\n");
+		if (PRINT_FIGURE_SIZE)
+			printf("         [%d] x [%d]\n", params->figure_width, params->figure_hight);
+		if (PRINT_FIGURE)
+			printf("%s", params->figure);
 	}
 	if (PRINT_BORDERS)
 	{

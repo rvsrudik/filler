@@ -12,7 +12,7 @@ static void ft_determ_border_top(t_filler *params, char type)
 	i = 0;
 	while (map[i] != type && map[i] != type + shift && map[i] != '\0')
 		i++;
-	border = i / params->map_width;
+	border = i / (params->map_width + 1);
 	if (type == 'X')
 		params->x_borders[0] = border;
 	if (type == 'O')
@@ -34,7 +34,7 @@ static void ft_determ_border_bot(t_filler *params, char type)
 		i++;
 	while (map[i] != type && map[i] != type + shift && i)
 		i--;
-	border = i / params->map_width;
+	border = i / (params->map_width + 1);
 
 	if (type == 'X')
 		params->x_borders[1] = border;
@@ -53,18 +53,27 @@ static void ft_determ_border_left(t_filler *params, char type)
 	map = params->map;
 	i = 0;
 	j = 0;
+	k = 0;
+
 	while (i < params->map_width && map[j] != type && map[j] != type + 'a' - 'A')
 	{
 		k = 0;
 		j = i;
 		while (k < params->map_hight && map[j] != type && map[j] != type + 'a' - 'A')
 		{
-			j = j + params->map_width + 1;
 			k++;
+			if (k < params->map_hight)
+				j = j + params->map_width + 1;
+
 		}
 		i++;
+
 	}
+	if (i == 0)
+		i++;
 	border = i - 1;
+
+
 	if (type == 'X')
 		params->x_borders[2] = border;
 	if (type == 'O')
@@ -87,6 +96,7 @@ static void ft_determ_border_right(t_filler *params, char type)
 		i++;
 	i = i - 2;
 	l = params->map_width;
+	j = i;
 	while (l && params->map[j] != type && params->map[j] != type + 'a' - 'A')
 	{
 		k = 0;
@@ -108,12 +118,13 @@ static void ft_determ_border_right(t_filler *params, char type)
 
 void	ft_determ_borders(t_filler *params)
 {
-	ft_determ_border_top(params, 'O');
 	ft_determ_border_top(params, 'X');
-	ft_determ_border_bot(params, 'O');
+	ft_determ_border_top(params, 'O');
 	ft_determ_border_bot(params, 'X');
-	ft_determ_border_left(params, 'O');
 	ft_determ_border_left(params, 'X');
-	ft_determ_border_right(params, 'O');
 	ft_determ_border_right(params, 'X');
+	ft_determ_border_bot(params, 'O');
+	ft_determ_border_left(params, 'O');
+	ft_determ_border_right(params, 'O');
+
 }
